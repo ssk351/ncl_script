@@ -21,22 +21,30 @@ wrfout = addfile("/scratch/brown/tqun/wrfdata/run_with_casLULC_2015_d/wrfout_d03
 ;height@lat2d = wrf_user_getvar(wrfout,"XLAT",0)   ; latitude/longitude
 ;height@lon2d = wrf_user_getvar(wrfout,"XLONG",0)  ; required for plotting
 
-
-wrfout2 = addfile("/scratch/brown/tqun/wrfdata/run_with_casLULC_1980_d/wrfout_d03_2013-08-04_12:00:00","r")
-
 ;-------- read free atmosphere wind 
 
 T = wrf_user_getvar(wrfout,"times",-1)
 T_ind = ispan(12,dimsizes(T)-1,12)
 
-uwnd = wrf_user_getvar(wrfout,"U",T_ind)
+do i = 0, dimsizes(T_ind) - 1
 
-p = wrf_user_getvar(wrfout,"";)
+uwnd = wrf_user_getvar(wrfout,"ua",T_ind)
+vwnd = wrf_user_getvar(wrfou,"va",T_ind)
+
+p = wrf_user_getvar(wrfout,"pressure",1)
+pressure = 850.
+
+uwnd850 = wrf_user_intrp3d(uwnd,p,"h",pressure,0.,False)
+vwnd850 = wrf_user_intrp3d(vwnd,p,"h",pressure,0.,False)
+
+end do
 
 
 ;------- read 10m wspd at obs times
 
-;u10 = wrf_user_getvar(wrfout2,"U10",-1)
+;wrfout2 = addfile("/scratch/brown/tqun/wrfdata/run_with_casLULC_1980_d/wrfout_d03_2013-08-04_12:00:00","r")
+
+;f10 = wrf_user_getvar(wrfout2,"U10",-1)
 ;v10 = wrf_user_getvar(wrfout2,"V10",-1)
 ;u10_obsT = u10(T_ind,:,:)               ; 10m u wind at observation times
 ;v10_obsT = v10(T_ind,:,:)               ; 10m v wind at observation times
