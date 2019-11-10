@@ -32,7 +32,7 @@ wnd_change_ratio_t1tot5(:,:,1) = wnd_change_ratio_t3
 wnd_change_ratio_t1tot5(:,:,2) = wnd_change_ratio_t4
 wnd_change_ratio_t1tot5(:,:,3) = wnd_change_ratio_t5
 
-wnd_change_ratio = dim_avg_n(wspd10_1980,2)
+wnd_change_ratio = dim_avg_n(wnd_change_ratio_t1tot5,2)
 
 wrfout = addfile("/depot/dniyogi/data/tian/PRD_city_expansion_t3/wrfout_d03_2014-02-20_12:00:00","r")
 
