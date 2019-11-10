@@ -179,10 +179,10 @@ wspd10_mean@lon2d = wrf_user_getvar(wrfout,"XLONG",0)  ; required for plotting
 ;
 ;res@cnLevelSelectionMode = "ExplicitLevels"	; manually set the contour levels
 ;res@cnFillPalette = "BlWhRe"
-;res@cnLevels    = (/-2.0, -1.8, -1.6, -1.4, -1.2, -1.0, -0.8, -0.6, -0.4,-0.2, 0., 0.2, 0.4, 0.6, 0.8, 1.0, 1.;2, 1.4, 1.6, 1.8, 2.0/);
-;res@cnFillColors = (/4,; 10, 18, 23, 30, 34, 38, 41, 44, 47, 50, 50, 53, 55, 57, 60, 64, 68, 74, 80, 88, 94/);
+;res@cnLevels    = (/-2.0, -1.8, -1.6, -1.4, -1.2, -1.0, -0.8, -0.6, -0.4,-0.2, 0., 0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0/);
+;res@cnFillColors = (/4, 10, 18, 23, 30, 34, 38, 41, 44, 47, 50, 50, 53, 55, 57, 60, 64, 68, 74, 80, 88, 94/);
 
-;res@cnLineLabelsOn = Fa;lse                    ; turn the line labels off ;
+;res@cnLineLabelsOn = False                    ; turn the line labels off ;
 ;
 ;;res@cnFillPalette = "OceanLakeLandSnow"
 ;
