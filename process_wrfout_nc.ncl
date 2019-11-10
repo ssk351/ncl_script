@@ -70,10 +70,10 @@ wnd_change_ratio_at_obs_points(cot,1) = obs_loc(cot,1)  ; lon
 wnd_change_ratio_at_obs_points(cot,2) = obs_loc(cot,2)  ; lat
 
 if loc(0) .lt. 0 .or. loc(1) .lt. 0 .or. loc(0) .ge. dims(1) .or. loc(1) .ge. dims(0) then
-	wnd_change_ratio_at_obs_points(cot,3:34) = 0
+	wnd_change_ratio_at_obs_points(cot,3) = 0
 
 else 
-	wnd_change_ratio_at_obs_points(cot,3) = wspd10_2015(:,loc(1),loc(0))
+	wnd_change_ratio_at_obs_points(cot,3) = wnd_change_ratio(:,loc(1),loc(0))
 end if
 
 end do
