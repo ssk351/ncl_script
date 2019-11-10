@@ -81,4 +81,4 @@ res@cnLineLabelsOn = False                    ; turn the line labels off ;
 res@tiMainString    = "city expansion on 10m wspd changing ratio"   ; add titles
 res@tiMainFontHeightF  = 0.015                    ; change font heights
 
-contour = gsn_csm_contour_map(wks,wspd10_mean, res)
+contour = gsn_csm_contour_map(wks,wnd_change_ratio, res)
