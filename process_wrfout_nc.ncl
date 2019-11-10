@@ -49,7 +49,7 @@ dims = dimsizes(lat)
 nlat = dims(0)
 nlon = dims(1)
 
-wks = gsn_open_wks("png","city_expansion_on_10mWSPD_t3") 
+wks = gsn_open_wks("png","city_expansion_on_10mWSPD_t1tot5_ratio") 
 
 res = True
 res@gsnMaximize = True
@@ -71,14 +71,14 @@ res@mpLambertMeridianF    = wrfout@STAND_LON
 
 res@cnLevelSelectionMode = "ExplicitLevels"	; manually set the contour levels
 res@cnFillPalette = "BlWhRe"
-res@cnLevels    = (/-2.0, -1.8, -1.6, -1.4, -1.2, -1.0, -0.8, -0.6, -0.4,-0.2, 0., 0.2, 0.4, 0.6, 0.8, 1.0, 1.;2, 1.4, 1.6, 1.8, 2.0/);
-res@cnFillColors = (/4,; 10, 18, 23, 30, 34, 38, 41, 44, 47, 50, 50, 53, 55, 57, 60, 64, 68, 74, 80, 88, 94/);
+res@cnLevels    = (/-0.15, -0.1, -0.05, -0.03,-0.01, 0., 0.01, 0.03, 0.05, 0.1, 0.15/);
+res@cnFillColors = (/18, 23, 34, 41, 44, 50, 50, 55, 57, 60, 68, 80, 88/);
 
-res@cnLineLabelsOn = Fa;lse                    ; turn the line labels off ;
+res@cnLineLabelsOn = False                    ; turn the line labels off ;
 
 ;res@cnFillPalette = "OceanLakeLandSnow"
 
-res@tiMainString    = "city expansion on 10m wspd t3"   ; add titles
+res@tiMainString    = "city expansion on 10m wspd changing ratio"   ; add titles
 res@tiMainFontHeightF  = 0.015                    ; change font heights
 
 contour = gsn_csm_contour_map(wks,wspd10_mean, res)
