@@ -2,7 +2,7 @@
 ;     read and process data
 ;----------------------------
  
-wrfout = addfile("/depot/dniyogi/data/tian/PRD_city_expansion_t3/wrfout_d03_2014-02-20_12:00:00","r")
+wrfout = addfile("/depot/dniyogi/data/tian/pearl_river_delta_city_expansion/wrfout_d03_2013-08-04_12:00:00","r")
 ;wrfout = addfile("/depot/dniyogi/data/tian/run_with_casLULC_2015_d_t5/wrfout_d03_2013-10-04_12:00:00","r")
 
 
@@ -20,7 +20,7 @@ wspd10_mean2015 = dim_avg_n(wspd10_2015,0)
 
 ;------- read 10m wspd at obs times 2 
 
-wrfout2 = addfile("/depot/dniyogi/data/tian/run_with_casLULC_1980_d_t3/wrfout_d03_2014-02-20_12:00:00","r")
+wrfout2 = addfile("/depot/dniyogi/data/tian/run_with_casLULC_1980_d/wrfout_d03_2013-08-04_12:00:00","r")
 
 uv10 = wrf_user_getvar(wrfout2,"uvmet10",-1)
 u10 = uv10(0,:,:,:)
@@ -227,11 +227,11 @@ wspd10_mean@lon2d = wrf_user_getvar(wrfout,"XLONG",0)  ; required for plotting
 ;-----------------------
 ;     output to .nc
 ;-----------------------
-ncdf = addfile("city_expansion_on_10WSPD_t3.nc","c")
+ncdf = addfile("city_expansion_on_10WSPD_t1.nc","c")
 filedimdef(ncdf,"time",-1,True)
 
-ncdf->wspd10_mean_diff_t3 = wspd10_mean
+ncdf->wspd10_mean_diff_t1 = wspd10_mean
 
 wspd10_mean1980@lat2d = wrf_user_getvar(wrfout,"XLAT",0)   ; latitude/longitude
 wspd10_mean1980@lon2d = wrf_user_getvar(wrfout,"XLONG",0)  ; required for plotting
-ncdf->wspd10_mean1980_t3 = wspd10_mean1980  
+ncdf->wspd10_mean1980_t1 = wspd10_mean1980  
