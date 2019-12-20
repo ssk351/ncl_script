@@ -151,45 +151,53 @@ wspd10_mean@lon2d = wrf_user_getvar(wrfout,"XLONG",0)  ; required for plotting
 
 ;----- shaded plot
 
-;lat  = wrfout->XLAT(0,:,:)
-;lon  = wrfout->XLONG(0,:,:)
-;dims = dimsizes(lat)
-;nlat = dims(0)
-;nlon = dims(1)
-;
-;wks = gsn_open_wks("png","city_expansion_on_10mWSPD_t3") 
-;
-;res = True
-;res@gsnMaximize = True
-;res@mpProjection          = "LambertConformal"
-;res@mpDataBaseVersion = "HighRes"
-;res@mpGeophysicalLineThicknessF = 3.0
-;res@pmTickMarkDisplayMode  = "Never"
-;res@cnFillOn = True
-;res@cnLinesOn           = False       ; Turn off contour lines
-;res@mpFillOn = False
-;res@mpLimitMode           = "Corners"
-;res@mpLeftCornerLatF      = lat(0,0)
-;res@mpLeftCornerLonF      = lon(0,0)
-;res@mpRightCornerLatF     = lat(nlat-1,nlon-1)
-;res@mpRightCornerLonF     = lon(nlat-1,nlon-1)
-;res@mpLambertParallel1F   = wrfout@TRUELAT1
-;res@mpLambertParallel2F   = wrfout@TRUELAT2
-;res@mpLambertMeridianF    = wrfout@STAND_LON
-;
-;res@cnLevelSelectionMode = "ExplicitLevels"	; manually set the contour levels
-;res@cnFillPalette = "BlWhRe"
-;res@cnLevels    = (/-2.0, -1.8, -1.6, -1.4, -1.2, -1.0, -0.8, -0.6, -0.4,-0.2, 0., 0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0/);
-;res@cnFillColors = (/4, 10, 18, 23, 30, 34, 38, 41, 44, 47, 50, 50, 53, 55, 57, 60, 64, 68, 74, 80, 88, 94/);
+lat  = wrfout->XLAT(0,:,:)
+lon  = wrfout->XLONG(0,:,:)
+dims = dimsizes(lat)
+nlat = dims(0)
+nlon = dims(1)
 
-;res@cnLineLabelsOn = False                    ; turn the line labels off ;
-;
-;;res@cnFillPalette = "OceanLakeLandSnow"
-;
-;res@tiMainString    = "city expansion on 10m wspd t3"   ; add titles
-;res@tiMainFontHeightF  = 0.015                    ; change font heights
-;
-;contour = gsn_csm_contour_map(wks,wspd10_mean, res)
+wks = gsn_open_wks("png","test_plot") 
+
+res = True
+res@gsnMaximize = True
+res@mpProjection          = "LambertConformal"
+res@mpDataBaseVersion = "HighRes"
+res@mpGeophysicalLineThicknessF = 3.0
+res@pmTickMarkDisplayMode  = "Never"
+res@cnFillOn = True
+res@cnLinesOn           = False       ; Turn off contour lines
+res@mpFillOn = False
+
+;res@mpLimitMode           = "Corners"
+;res@mpLeftCornerLatF      = lat(20,20)
+;res@mpLeftCornerLonF      = lon(20,20)
+;res@mpRightCornerLatF     = lat(nlat-21,nlon-21)
+;res@mpRightCornerLonF     = lon(nlat-21,nlon-21)
+
+res@mpLimitMode           = "LatLon"
+res@mpMinLatF             = 21
+res@mpMaxLatF             = 24
+res@mpMinLonF             = 112
+res@mpMaxLonF             = 115
+
+res@mpLambertParallel1F   = wrfout@TRUELAT1
+res@mpLambertParallel2F   = wrfout@TRUELAT2
+res@mpLambertMeridianF    = wrfout@STAND_LON
+
+res@cnLevelSelectionMode = "ExplicitLevels"	; manually set the contour levels
+res@cnFillPalette = "BlWhRe"
+res@cnLevels    = (/-2.0, -1.8, -1.6, -1.4, -1.2, -1.0, -0.8, -0.6, -0.4,-0.2, 0., 0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0/);
+res@cnFillColors = (/4, 10, 18, 23, 30, 34, 38, 41, 44, 47, 50, 50, 53, 55, 57, 60, 64, 68, 74, 80, 88, 94/);
+
+res@cnLineLabelsOn = False                    ; turn the line labels off ;
+
+;res@cnFillPalette = "OceanLakeLandSnow"
+
+res@tiMainString    = "city expansion on 10m wspd t3"   ; add titles
+res@tiMainFontHeightF  = 0.015                    ; change font heights
+
+contour = gsn_csm_contour_map(wks,wspd10_mean, res)
 
 ;------ vector plot
  
@@ -227,11 +235,11 @@ wspd10_mean@lon2d = wrf_user_getvar(wrfout,"XLONG",0)  ; required for plotting
 ;-----------------------
 ;     output to .nc
 ;-----------------------
-ncdf = addfile("city_expansion_on_10WSPD_t1.nc","c")
-filedimdef(ncdf,"time",-1,True)
-
-ncdf->wspd10_mean_diff_t1 = wspd10_mean
-
-wspd10_mean1980@lat2d = wrf_user_getvar(wrfout,"XLAT",0)   ; latitude/longitude
-wspd10_mean1980@lon2d = wrf_user_getvar(wrfout,"XLONG",0)  ; required for plotting
-ncdf->wspd10_mean1980_t1 = wspd10_mean1980  
+;ncdf = addfile("city_expansion_on_10WSPD_t1.nc","c")
+;filedimdef(ncdf,"time",-1,True)
+;
+;ncdf->wspd10_mean_diff_t1 = wspd10_mean
+;
+;wspd10_mean1980@lat2d = wrf_user_getvar(wrfout,"XLAT",0)   ; latitude/longitude
+;wspd10_mean1980@lon2d = wrf_user_getvar(wrfout,"XLONG",0)  ; required for plotting
+;ncdf->wspd10_mean1980_t1 = wspd10_mean1980  
