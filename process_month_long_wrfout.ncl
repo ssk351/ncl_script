@@ -138,7 +138,7 @@ dims = dimsizes(lat)
 nlat = dims(0)
 nlon = dims(1)
 
-wks = gsn_open_wks("pdf","PRD_city_expand_on_10mWSPD_Jun2015") 
+wks = gsn_open_wks("png","PRD_city_expand_on_10mWSPD_Jun2015") 
 
 res = True
 res@gsnMaximize = True
@@ -178,4 +178,4 @@ res@cnLineLabelsOn = False                    ; turn the line labels off ;
 ;res@tiMainString    = "city expansion on 10m wspd t3"   ; add titles
 res@tiMainFontHeightF  = 0.015                    ; change font heights
 
-contour = gsn_csm_contour_map(wks,wspd10m_diff_Jun_mean, res)
+contour = gsn_csm_contour_map(wks,wspd10m_diff_Jun_mean,res)
