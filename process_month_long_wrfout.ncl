@@ -6,7 +6,7 @@ wrfout = addfile("/depot/dniyogi/data/tian/run_with_LULC1980_Jun2015/wrfout_d03_
 ;-------- read data --------;
 
 T := wrf_user_getvar(wrfout,"times",-1)
-T_ind = ispan(5,17,6)
+T_ind = ispan(18,240,6)
 uv10 = wrf_user_getvar(wrfout,"uvmet10",-1)
 u10 = uv10(0,:,:,:)
 v10 = uv10(1,:,:,:)
