@@ -120,7 +120,7 @@ delete(dim)
 ;          computation             ;
 ;----------------------------------;
 
-wspd10m_diff_Jun2015 = Lulc1980_Jun - citexp_Jun
+wspd10m_diff_Jun2015 = Lulc1980_Jun - Citexp_Jun
 wspd10m_diff_Jun_mean = dim_avg_n(wspd10m_diff_Jun2015,0)
 wspd10m_diff_Jun_mean@lat2d = c_D_1@lat2d
 wspd10m_diff_Jun_mean@lon2d = c_D_1@lon2d
