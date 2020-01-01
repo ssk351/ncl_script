@@ -121,12 +121,24 @@ delete(dim)
 ;----------------------------------;
 wrfout = addfile("/depot/dniyogi/data/tian/run_with_LULC1980_Jun2015/wrfout_d03_2015-06-21_01:00:00","r")
 
+;------ city expansion on 10m wspd in Jun 2015
+
 wspd10m_diff_Jun2015 = Citexp_Jun - Lulc1980_Jun
 wspd10m_diff_Jun_mean = dim_avg_n(wspd10m_diff_Jun2015,0)
 wspd10m_diff_Jun_mean@lat2d = wrf_user_getvar(wrfout,"XLAT",0)
 wspd10m_diff_Jun_mean@lon2d = wrf_user_getvar(wrfout,"XLONG",0) 
 
 wspd10_clim_Jun2015 = dim_avg_n(Lulc1980_Jun,0)  ; wndspd climatology 
+
+;------ city expansion on 10m wspd in Dec 2015
+
+wspd10m_diff_Dec2015 = Citexp_Dec - Lulc1980_Dec
+wspd10m_diff_Dec_mean = dim_avg_n(wspd10m_diff_Dec2015,0)
+wspd10m_diff_Dec_mean@lat2d = wrf_user_getvar(wrfout,"XLAT",0)
+wspd10m_diff_Dec_mean@lon2d = wrf_user_getvar(wrfout,"XLONG",0) 
+
+wspd10_clim_Dec2015 = dim_avg_n(Lulc1980_Dec,0)  ; wndspd climatology 
+
 
 ;----------------------------------;
 ;              plot                ;
@@ -139,7 +151,7 @@ dims = dimsizes(lat)
 nlat = dims(0)
 nlon = dims(1)
 
-wks = gsn_open_wks("pdf","PRD_city_expand_on_10mWSPD_Jun2015") 
+wks = gsn_open_wks("pdf","PRD_city_expand_on_10mWSPD_Dec2015") 
 
 res = True
 res@gsnMaximize = True
@@ -179,4 +191,4 @@ res@cnLineLabelsOn = False                    ; turn the line labels off ;
 ;res@tiMainString    = "city expansion on 10m wspd t3"   ; add titles
 res@tiMainFontHeightF  = 0.015                    ; change font heights
 
-contour = gsn_csm_contour_map(wks,wspd10m_diff_Jun_mean,res)
+contour = gsn_csm_contour_map(wks,wspd10m_diff_Dec_mean,res)
