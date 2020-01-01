@@ -122,8 +122,8 @@ delete(dim)
 
 wspd10m_diff_Jun2015 = Lulc1980_Jun - citexp_Jun
 wspd10m_diff_Jun_mean = dim_avg_n(wspd10m_diff_Jun2015,0)
-wspd10m_diff_Jun_mean@lat2d = wspd10_Jun2015_p3@lat2d
-wspd10m_diff_Jun_mean@lon2d = wspd10_Jun2015_p3@lon2d
+wspd10m_diff_Jun_mean@lat2d = c_D_1@lat2d
+wspd10m_diff_Jun_mean@lon2d = c_D_1@lon2d
 
 wspd10_clim_Jun2015 = dim_avg_n(Lulc1980_Jun,0)  ; wndspd climatology 
 
@@ -138,7 +138,7 @@ dims = dimsizes(lat)
 nlat = dims(0)
 nlon = dims(1)
 
-wks = gsn_open_wks("png","PRD_city_expand_on_10mWSPD_Jun2015") 
+wks = gsn_open_wks("pdf","PRD_city_expand_on_10mWSPD_Jun2015") 
 
 res = True
 res@gsnMaximize = True
