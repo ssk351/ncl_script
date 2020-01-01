@@ -8,4 +8,4 @@ module load ncl
 cd ~
 
 # Runs a NCL script 
-ncl process_month_long_wrfout.ncl
+ncl Github/ncl_scripts/process_month_long_wrfout.ncl
