@@ -1,7 +1,7 @@
 ;--------------------------------;
 ;   read and output wrf data 
 ;--------------------------------;
-wrfout = addfile("/depot/dniyogi/data/tian/run_with_LULC1980_Jun2015/wrfout_d03_2015-06-01_00:00:00","r")
+wrfout = addfile("/depot/dniyogi/data/tian/run_with_LULC1980_Jun2015/wrfout_d03_2015-06-11_01:00:00","r")
 
 ;-------- read data --------;
 
