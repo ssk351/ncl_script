@@ -1,0 +1,11 @@
+#!/bin/sh -l
+# FILENAME: ncljob.sub
+
+# Loads NCL and sets the application up
+module load ncl
+
+# Change to the directory from which you originally submitted this job.
+cd ~
+
+# Runs a NCL script 
+ncl process_month_long_wrfout.ncl
