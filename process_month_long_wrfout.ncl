@@ -119,11 +119,12 @@ delete(dim)
 ;----------------------------------;
 ;          computation             ;
 ;----------------------------------;
+wrfout = addfile("/depot/dniyogi/data/tian/run_with_LULC1980_Jun2015/wrfout_d03_2015-06-21_01:00:00","r")
 
 wspd10m_diff_Jun2015 = Lulc1980_Jun - Citexp_Jun
 wspd10m_diff_Jun_mean = dim_avg_n(wspd10m_diff_Jun2015,0)
-wspd10m_diff_Jun_mean@lat2d = c_D_1@lat2d
-wspd10m_diff_Jun_mean@lon2d = c_D_1@lon2d
+wspd10m_diff_Jun_mean@lat2d = wrf_user_getvar(wrfout,"XLAT",0)
+wspd10m_diff_Jun_mean@lon2d = wrf_user_getvar(wrfout,"XLONG",0) 
 
 wspd10_clim_Jun2015 = dim_avg_n(Lulc1980_Jun,0)  ; wndspd climatology 
 
