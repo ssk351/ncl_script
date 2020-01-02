@@ -234,7 +234,7 @@ Lulc1980_PRD_pdf = pdfx(Lulc1980_PRD, 0, False)
 
 nVar    = 2
 nBin    = Citexp_PRD_pdf@nbins          ; retrieve the number of bin
-xx      = new ( (/nVar, nBin/), typeof(Citexp_PRD_pdf)
+xx      = new ( (/nVar, nBin/), typeof(Citexp_PRD_pdf))
 xx(0,:) = Citexp_PRD_pdf@bin_center     ; assign appropriate "x" axis values
 xx(1,:) = Lulc1980_PRD_pdf@bin_center
 
