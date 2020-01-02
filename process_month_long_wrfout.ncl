@@ -231,6 +231,7 @@ temp2 := reshape(Lulc1980_PRD,(/dim(0)*dim(1)*dim(2),1/))    ; one dimensional
 
 Citexp_PRD := temp 
 Lulc1980_PRD := temp2
+printVarSummary(Citexp_PRD)
 
 max_L = max(Lulc1980_PRD) ; find max in Lulc1980_PRD
 indx = ind(Citexp_PRD.lt.max_L) ; indices of Citexp_PRD lower than max Lulc1980_PRD
