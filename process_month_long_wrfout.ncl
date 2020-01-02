@@ -168,7 +168,7 @@ nlat = dims(0)
 nlon = dims(1)
 
 ;wks = gsn_open_wks("pdf","PRD_city_expand_on_10mWSPD_2015_diff_clim_ratio") 
-;wks = gsn_open_wks("png","text") 
+wks = gsn_open_wks("png","text") 
 
 res = True
 res@gsnMaximize = True
