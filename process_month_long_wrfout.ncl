@@ -159,110 +159,110 @@ delete(dim)
 
 ;--------- shaded plot ------------;
 
-wrfout = addfile("/depot/dniyogi/data/tian/run_with_LULC1980_Jun2015/wrfout_d03_2015-06-21_01:00:00","r")
-
-lat  = wrfout->XLAT(0,:,:)
-lon  = wrfout->XLONG(0,:,:)
-dims = dimsizes(lat)
-nlat = dims(0)
-nlon = dims(1)
-
+;wrfout = addfile("/depot/dniyogi/data/tian/run_with_LULC1980_Jun2015/wrfout_d03_2015-06-21_01:00:00","r")
+;
+;lat  = wrfout->XLAT(0,:,:)
+;lon  = wrfout->XLONG(0,:,:)
+;dims = dimsizes(lat)
+;nlat = dims(0)
+;nlon = dims(1)
+;
 ;wks = gsn_open_wks("pdf","PRD_city_expand_on_10mWSPD_2015_diff_clim_ratio") 
-wks = gsn_open_wks("png","text") 
-
-res = True
-res@gsnMaximize = True
-res@mpProjection          = "LambertConformal"
-res@mpDataBaseVersion = "HighRes"
-res@mpGeophysicalLineThicknessF = 3.0
-res@pmTickMarkDisplayMode  = "Never"
-res@cnFillOn = True
-res@cnLinesOn           = False       ; Turn off contour lines
-res@mpFillOn = False
-
-res@mpLimitMode           = "Corners"
-res@mpLeftCornerLatF      = lat(10,40)
-res@mpLeftCornerLonF      = lon(10,40)
-res@mpRightCornerLatF     = lat(nlat-65,nlon-45)
-res@mpRightCornerLonF     = lon(nlat-65,nlon-45)
-
+;;wks = gsn_open_wks("png","text") 
+;
+;res = True
+;res@gsnMaximize = True
+;res@mpProjection          = "LambertConformal"
+;res@mpDataBaseVersion = "HighRes"
+;res@mpGeophysicalLineThicknessF = 3.0
+;res@pmTickMarkDisplayMode  = "Never"
+;res@cnFillOn = True
+;res@cnLinesOn           = False       ; Turn off contour lines
+;res@mpFillOn = False
+;
+;;res@mpLimitMode           = "Corners"
+;;res@mpLeftCornerLatF      = lat(10,40)
+;;res@mpLeftCornerLonF      = lon(10,40)
+;;res@mpRightCornerLatF     = lat(nlat-65,nlon-45)
+;;res@mpRightCornerLonF     = lon(nlat-65,nlon-45)
+;
 ;res@mpLimitMode           = "LatLon"
 ;res@mpMinLatF             = 21
 ;res@mpMaxLatF             = 24
 ;res@mpMinLonF             = 112
 ;res@mpMaxLonF             = 115
-
-res@mpLambertParallel1F   = wrfout@TRUELAT1
-res@mpLambertParallel2F   = wrfout@TRUELAT2
-res@mpLambertMeridianF    = wrfout@STAND_LON
-
-res@cnLevelSelectionMode = "ExplicitLevels"	; manually set the contour levels
-res@cnFillPalette = "BlWhRe"
-;res@cnLevels    = (/-2.0, -1.8, -1.6, -1.4, -1.2, -1.0, -0.8, -0.6, -0.4,-0.2, 0., 0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0/)   ; for wind  
-;res@cnFillColors = (/4, 10, 18, 23, 30, 34, 38, 41, 44, 47, 50, 50, 53, 55, 57, 60, 64, 68, 74, 80, 88, 94/)                            ; diff plot
-
-res@cnLevels    = (/-0.25, -0.2, -0.15, -0.1,-0.05, 0., 0.05, 0.1, 0.15, 0.2, 0.25/)   ; for diff / clim
-res@cnFillColors = (/18, 27, 34, 41, 47, 50, 50, 53, 57, 60, 68, 80, 88/)                ; ratio plot
-
-res@cnLineLabelsOn = False                    ; turn the line labels off ;
-
-;res@cnFillPalette = "OceanLakeLandSnow"
-
-;res@tiMainString    = "city expansion on 10m wspd t3"   ; add titles
-;res@tiMainFontHeightF  = 0.015                    ; change font heights
-
-contour = gsn_csm_contour_map(wks,DIF_CLIM_ratio,res)
+;
+;res@mpLambertParallel1F   = wrfout@TRUELAT1
+;res@mpLambertParallel2F   = wrfout@TRUELAT2
+;res@mpLambertMeridianF    = wrfout@STAND_LON
+;
+;res@cnLevelSelectionMode = "ExplicitLevels"	; manually set the contour levels
+;res@cnFillPalette = "BlWhRe"
+;;res@cnLevels    = (/-2.0, -1.8, -1.6, -1.4, -1.2, -1.0, -0.8, -0.6, -0.4,-0.2, 0., 0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0/)   ; for wind  
+;;res@cnFillColors = (/4, 10, 18, 23, 30, 34, 38, 41, 44, 47, 50, 50, 53, 55, 57, 60, 64, 68, 74, 80, 88, 94/)                            ; diff plot
+;
+;res@cnLevels    = (/-0.25, -0.2, -0.15, -0.1,-0.05, 0., 0.05, 0.1, 0.15, 0.2, 0.25/)   ; for diff / clim
+;res@cnFillColors = (/18, 27, 34, 41, 47, 50, 50, 53, 57, 60, 68, 80, 88/)                ; ratio plot
+;
+;res@cnLineLabelsOn = False                    ; turn the line labels off ;
+;
+;;res@cnFillPalette = "OceanLakeLandSnow"
+;
+;;res@tiMainString    = "city expansion on 10m wspd t3"   ; add titles
+;;res@tiMainFontHeightF  = 0.015                    ; change font heights
+;
+;contour = gsn_csm_contour_map(wks,DIF_CLIM_ratio,res)
 
 
 ;-------- probability distribution density --------;
 
-;Citexp = array_append_record(Citexp_Dec, Citexp_Jun, 0)
-;Lulc1980 = array_append_record(Lulc1980_Dec, Lulc1980_Jun, 0)
-;
-;dim = dimsizes(Citexp)
-;
-;Citexp_PRD = Citexp(:, :dim(1) , :dim(2) )
-;Lulc1980_PRD = Lulc1980(:, :dim(1) , :dim(2) )
-;
-;dim := dimsizes(Citexp_PRD)
-;
-;C_P = reshape(Citexp_PRD,(/dim(0)*dim(1)*dim(2),1/))
-;L_P = reshape(Lulc1980_PRD,(/dim(0)*dim(1)*dim(2),1/))
-;
-;Citexp_PRD_pdf = pdfx(C_P, 40, False)
-;Lulc1980_PRD_pdf = pdfx(L_P, 40, False)
-;
-;nVar = 2
-;nBin = Citexp_PRD_pdf@nbins
-;
-;xx      = new ( (/nVar, nBin/), typeof(Citexp_PRD_pdf))
-;
-;xx(0,:) = Citexp_PRD_pdf@bin_center     ; assign appropriate "x" axis values
-;xx(1,:) = Lulc1980_PRD_pdf@bin_center
-;
-;yy      = new ( (/nVar, nBin/), typeof(Citexp_PRD_pdf))
-;yy(0,:) = (/ Citexp_PRD_pdf /)
-;yy(1,:) = (/ Lulc1980_PRD_pdf /)
-;
-;wks  = gsn_open_wks ("pdf","lulc1980_vs_city_expansion_10mWSPD_pdf")                ; send graphics to PNG file
-;res  = True
-;res@xyLineThicknesses        = (/2.0,2.0/)        
-;res@xyLineColors             = (/"blue","red"/)  
-;res@xyMonoDashPattern        = True              ; all solid 
-;res@tiYAxisString            = "PDF (%)"
-;
-;res@gsnXYBarChart            = True              ; Create bar plot
-;res@gsnXYBarChartOutlineOnly = True
-;
-;res@pmLegendDisplayMode    = "Always"            ; turn on legend
-;res@pmLegendSide           = "Top"               ; Change location of 
-;res@pmLegendParallelPosF   = .25                 ; move units right
-;res@pmLegendOrthogonalPosF = -0.4                ; move units down
-;res@pmLegendWidthF         = 0.125               ; Change width and
-;res@pmLegendHeightF        = 0.15                ; height of legend.
-;res@lgPerimOn              = True                ; turn off/on box around
-;res@lgLabelFontHeightF     = .015                ; label font height
-;res@xyExplicitLegendLabels = (/"City Expansion","LULC1980"/)  ; create explicit labels
-;
-;;res@tiMainString           = "PDF: Three Distributions: 40 Bins"
-;plot = gsn_csm_xy (wks, xx, yy, res)
+Citexp = array_append_record(Citexp_Dec, Citexp_Jun, 0)
+Lulc1980 = array_append_record(Lulc1980_Dec, Lulc1980_Jun, 0)
+
+dim = dimsizes(Citexp)
+
+Citexp_PRD = Citexp(:, 10:dim(1) - 65 , 40:dim(2) - 45)
+Lulc1980_PRD = Lulc1980(:, 10:dim(1) - 65 , 40:dim(2) - 45)
+
+dim := dimsizes(Citexp_PRD)
+
+C_P = reshape(Citexp_PRD,(/dim(0)*dim(1)*dim(2),1/))
+L_P = reshape(Lulc1980_PRD,(/dim(0)*dim(1)*dim(2),1/))
+
+Citexp_PRD_pdf = pdfx(C_P, 40, False)
+Lulc1980_PRD_pdf = pdfx(L_P, 40, False)
+
+nVar = 2
+nBin = Citexp_PRD_pdf@nbins
+
+xx      = new ( (/nVar, nBin/), typeof(Citexp_PRD_pdf))
+
+xx(0,:) = Citexp_PRD_pdf@bin_center     ; assign appropriate "x" axis values
+xx(1,:) = Lulc1980_PRD_pdf@bin_center
+
+yy      = new ( (/nVar, nBin/), typeof(Citexp_PRD_pdf))
+yy(0,:) = (/ Citexp_PRD_pdf /)
+yy(1,:) = (/ Lulc1980_PRD_pdf /)
+
+wks  = gsn_open_wks ("pdf","lulc1980_vs_city_expansion_10mWSPD_pdf")                ; send graphics to PNG file
+res  = True
+res@xyLineThicknesses        = (/2.0,2.0/)        
+res@xyLineColors             = (/"blue","red"/)  
+res@xyMonoDashPattern        = True              ; all solid 
+res@tiYAxisString            = "PDF (%)"
+
+res@gsnXYBarChart            = True              ; Create bar plot
+res@gsnXYBarChartOutlineOnly = True
+
+res@pmLegendDisplayMode    = "Always"            ; turn on legend
+res@pmLegendSide           = "Top"               ; Change location of 
+res@pmLegendParallelPosF   = .25                 ; move units right
+res@pmLegendOrthogonalPosF = -0.4                ; move units down
+res@pmLegendWidthF         = 0.125               ; Change width and
+res@pmLegendHeightF        = 0.15                ; height of legend.
+res@lgPerimOn              = True                ; turn off/on box around
+res@lgLabelFontHeightF     = .015                ; label font height
+res@xyExplicitLegendLabels = (/"City Expansion","LULC1980"/)  ; create explicit labels
+
+;res@tiMainString           = "PDF: Three Distributions: 40 Bins"
+plot = gsn_csm_xy (wks, xx, yy, res)
