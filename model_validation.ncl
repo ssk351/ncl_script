@@ -2,7 +2,7 @@
 ;   read and output wrf data   ;
 ;------------------------------;
 
-wrfout = addfile("/depot/dniyogi/data/tian/run_with_LULC2015_Jun2015/wrfout_d03_2015-06-01_00:00:00","r")
+wrfout = addfile("/depot/dniyogi/data/tian/run_with_LULC2015_Dec2015/wrfout_d03_2015-12-01_00:00:00","r")
 
 ;------ read data
 
@@ -79,7 +79,7 @@ end if
 end do
 
 ;fname = "wspd10_Jun2015_model_validation.txt"
-fname = "t2_Jun2015_model_validation.txt"
+fname = "t2_Dec2015_model_validation.txt"
 
 do j = 0, 825
 
