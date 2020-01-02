@@ -228,10 +228,10 @@ Lulc1980!2 = "lon"
 
 do i = 0, dim(0) - 1
 
-Citexp(i,:,:)&lat2d = wrf_user_getvar(wrfout,"XLAT",0)
-Citexp(i,:,:)&lon2d = wrf_user_getvar(wrfout,"XLONG",0) 
-Lulc1980(i,:,:)&lon2d = wrf_user_getvar(wrfout,"XLONG",0) 
-Lulc1980(i,:,:)&lat2d = wrf_user_getvar(wrfout,"XLAT",0)
+Citexp(i,:,:)&lat = wrf_user_getvar(wrfout,"XLAT",0)
+Citexp(i,:,:)&lon = wrf_user_getvar(wrfout,"XLONG",0) 
+Lulc1980(i,:,:)&lon = wrf_user_getvar(wrfout,"XLONG",0) 
+Lulc1980(i,:,:)&lat = wrf_user_getvar(wrfout,"XLAT",0)
 
 end do
 
