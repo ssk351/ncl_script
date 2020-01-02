@@ -226,23 +226,36 @@ Lulc1980_PRD = Lulc1980(:, 10:dim(1) - 65 , 40:dim(2) - 45)
 
 dim := dimsizes(Citexp_PRD)
 
-C_P = reshape(Citexp_PRD,(/dim(0)*dim(1)*dim(2),1/))
-L_P = reshape(Lulc1980_PRD,(/dim(0)*dim(1)*dim(2),1/))
+;C_P = reshape(Citexp_PRD,(/dim(0)*dim(1)*dim(2),1/))
+;L_P = reshape(Lulc1980_PRD,(/dim(0)*dim(1)*dim(2),1/))
 
-Citexp_PRD_pdf = pdfx(C_P, 0, False)
-Lulc1980_PRD_pdf = pdfx(L_P, 0, False)
+Citexp_PRD_pdf = pdfx(Citexp_PRD, 0, False)
+Lulc1980_PRD_pdf = pdfx(Lulc1980_PRD, 0, False)
 
-nVar = 1
-plot = new ( nVar, "graphic")
-wks  = gsn_open_wks ("pdf","lulc1980_vs_city_expansion_10mWSPD_pdf2")                ; send graphics to PNG file
+nVar    = 2
+nBin    = Citexp_PRD_pdf@nbins          ; retrieve the number of bin
+xx      = new ( (/nVar, nBin/), typeof(Citexp_PRD_pdf)
+xx(0,:) = Citexp_PRD_pdf@bin_center     ; assign appropriate "x" axis values
+xx(1,:) = Lulc1980_PRD_pdf@bin_center
+
+yy      = new ( (/nVar, nBin/), typeof(ap))
+yy(0,:) = (/ ap /)
+yy(1,:) = (/ bp /)
+wks  = gsn_open_wks ("pdf","lulc1980_vs_city_expansion_10mWSPD_pdf")                ; send graphics to PNG file
 res  = True
-res@gsnDraw                = False
-res@gsnFrame               = False
-res@xyLineThicknessF       = 2
-res@tiYAxisString          = "PDF (%)"
-
-plot(0) = gsn_csm_xy (wks, Lulc1980_PRD_pdf@bin_center, Lulc1980_PRD_pdf, res)
-
-resP    = True
-resP@gsnPanelRowSpec       = True              ; tell panel what order to plt
-gsn_panel(wks,plot,(/1/),resP)
+res@xyLineThicknesses        = (/2.0,2.0/)        
+res@xyLineColors             = (/"blue","red"/)  
+res@xyMonoDashPattern        = True              ; all solid 
+res@tiYAxisString            = "PDF (%)
+res@gsnXYBarChart            = True              ; Create bar plot
+res@gsnXYBarChartOutlineOnly = Tru
+res@pmLegendDisplayMode    = "Always"            ; turn on legend
+res@pmLegendSide           = "Top"               ; Change location of 
+res@pmLegendParallelPosF   = 2.25                 ; move units right
+res@pmLegendOrthogonalPosF = -0.4                ; move units down
+res@pmLegendWidthF         = 0.125               ; Change width and
+res@pmLegendHeightF        = 0.15                ; height of legend.
+res@lgPerimOn              = True                ; turn off/on box around
+res@lgLabelFontHeightF     = .015                ; label font height
+res@tiMainString           = "PDF: Three Distributions: 40 Bins"
+plot = gsn_csm_xy (wks, xx, yy, res)
