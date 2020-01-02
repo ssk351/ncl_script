@@ -139,6 +139,19 @@ wspd10m_diff_Dec_mean@lon2d = wrf_user_getvar(wrfout,"XLONG",0)
 
 wspd10_clim_Dec2015 = dim_avg_n(Lulc1980_Dec,0)  ; wndspd climatology 
 
+;------ city expansion on 10 wspd in Jun & Dec 2015
+
+Jun_ratio = wspd10m_diff_Jun_mean / wspd10_clim_Jun2015 ; ratio of diff / climatology
+Dec_ratio = wspd10m_diff_Dec_mean / wspd10_clim_Dec2015 ; ratio of diff / climatology
+
+dim = dimsizes(Jun_ratio)
+diff_clim_ratio = new((/dim(0),dim(1),2/),float,"No_FillValue")
+diff_clim_ratio(:,:,0) = Jun_ratio
+diff_clim_ratio(:,:,1) = Dec_ratio
+DIF_CLIM_ratio = dim_avg_n(diff_clim_ratio,2)
+
+DIF_CLIM_ratio@lat2d = wrf_user_getvar(wrfout,"XLAT",0)
+DIF_CLIM_ratio@lon2d = wrf_user_getvar(wrfout,"XLONG",0) 
 
 ;----------------------------------;
 ;              plot                ;
@@ -151,7 +164,7 @@ dims = dimsizes(lat)
 nlat = dims(0)
 nlon = dims(1)
 
-wks = gsn_open_wks("pdf","PRD_city_expand_on_10mWSPD_Dec2015") 
+wks = gsn_open_wks("pdf","PRD_city_expand_on_10mWSPD_2015_diff_clim_ratio") 
 
 res = True
 res@gsnMaximize = True
@@ -181,8 +194,11 @@ res@mpLambertMeridianF    = wrfout@STAND_LON
 
 res@cnLevelSelectionMode = "ExplicitLevels"	; manually set the contour levels
 res@cnFillPalette = "BlWhRe"
-res@cnLevels    = (/-2.0, -1.8, -1.6, -1.4, -1.2, -1.0, -0.8, -0.6, -0.4,-0.2, 0., 0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0/);
-res@cnFillColors = (/4, 10, 18, 23, 30, 34, 38, 41, 44, 47, 50, 50, 53, 55, 57, 60, 64, 68, 74, 80, 88, 94/);
+;res@cnLevels    = (/-2.0, -1.8, -1.6, -1.4, -1.2, -1.0, -0.8, -0.6, -0.4,-0.2, 0., 0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0/)   ; for wind  
+;res@cnFillColors = (/4, 10, 18, 23, 30, 34, 38, 41, 44, 47, 50, 50, 53, 55, 57, 60, 64, 68, 74, 80, 88, 94/)                            ; diff plot
+
+res@cnLevels    = (/-0.15, -0.1, -0.05, -0.03,-0.01, 0., 0.01, 0.03, 0.05, 0.1, 0.15/)   ; for diff / clim
+res@cnFillColors = (/18, 27, 34, 41, 47, 50, 50, 53, 57, 60, 68, 80, 88/)                ; ratio plot
 
 res@cnLineLabelsOn = False                    ; turn the line labels off ;
 
@@ -191,4 +207,4 @@ res@cnLineLabelsOn = False                    ; turn the line labels off ;
 ;res@tiMainString    = "city expansion on 10m wspd t3"   ; add titles
 res@tiMainFontHeightF  = 0.015                    ; change font heights
 
-contour = gsn_csm_contour_map(wks,wspd10m_diff_Dec_mean,res)
+contour = gsn_csm_contour_map(wks,DIF_CLIM_ratio,res)
