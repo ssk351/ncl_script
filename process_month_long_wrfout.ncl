@@ -222,10 +222,15 @@ dim = dimsizes(Citexp)
 
 do i = 0, dim(0) - 1
 
-Citexp(i,:,:)@lat2d = wrf_user_getvar(wrfout,"XLAT",0)
-Citexp(i,:,:)@lon2d = wrf_user_getvar(wrfout,"XLONG",0) 
-Lulc1980(i,:,:)@lon2d = wrf_user_getvar(wrfout,"XLONG",0) 
-Lulc1980(i,:,:)@lat2d = wrf_user_getvar(wrfout,"XLAT",0)
+Citexp(i,:,:)!1 = "lat"
+Citexp(i,:,:)!2 = "lon"
+Lulc1980(i,:,:)!1 = "lat"
+Lulc1980(i,:,:)!2 = "lon"
+
+Citexp(i,:,:)&lat2d = wrf_user_getvar(wrfout,"XLAT",0)
+Citexp(i,:,:)&lon2d = wrf_user_getvar(wrfout,"XLONG",0) 
+Lulc1980(i,:,:)&lon2d = wrf_user_getvar(wrfout,"XLONG",0) 
+Lulc1980(i,:,:)&lat2d = wrf_user_getvar(wrfout,"XLAT",0)
 
 end do
 
