@@ -264,6 +264,6 @@ res@pmLegendWidthF         = 0.125               ; Change width and
 res@pmLegendHeightF        = 0.15                ; height of legend.
 res@lgPerimOn              = True                ; turn off/on box around
 res@lgLabelFontHeightF     = .015                ; label font height
-res@xyExplicitLegendLabels = (/"City Expansion","LULC1980"/)  ; create explicit labels
+res@xyExplicitLegendLabels = (/"LULC1980 + City Expansion","LULC1980"/)  ; create explicit labels
 ;res@tiMainString           = "PDF: Three Distributions: 40 Bins"
 plot = gsn_csm_xy (wks, xx, yy, res)
