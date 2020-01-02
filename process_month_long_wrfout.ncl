@@ -182,8 +182,8 @@ res@mpFillOn = False
 
 res@mpLimitMode           = "Corners"
 res@mpLeftCornerLatF      = lat(0,0)
-res@mpLeftCornerLonF      = lon(12,12)
-res@mpRightCornerLatF     = lat(nlat-60,nlon-60)
+res@mpLeftCornerLonF      = lon(22,22)
+res@mpRightCornerLatF     = lat(nlat-70,nlon-70)
 res@mpRightCornerLonF     = lon(nlat-31,nlon-31)
 
 ;res@mpLimitMode           = "LatLon"
