@@ -182,9 +182,9 @@ res@mpFillOn = False
 
 res@mpLimitMode           = "Corners"
 res@mpLeftCornerLatF      = lat(0,0)
-res@mpLeftCornerLonF      = lon(22,22)
-res@mpRightCornerLatF     = lat(nlat-70,nlon-70)
-res@mpRightCornerLonF     = lon(nlat-31,nlon-31)
+res@mpLeftCornerLonF      = lon(0,0)
+res@mpRightCornerLatF     = lat(nlat-1,nlon-1)
+res@mpRightCornerLonF     = lon(nlat-1,nlon-1)
 
 ;res@mpLimitMode           = "LatLon"
 ;res@mpMinLatF             = 21
@@ -209,7 +209,7 @@ res@cnLineLabelsOn = False                    ; turn the line labels off ;
 ;res@cnFillPalette = "OceanLakeLandSnow"
 
 ;res@tiMainString    = "city expansion on 10m wspd t3"   ; add titles
-res@tiMainFontHeightF  = 0.015                    ; change font heights
+;res@tiMainFontHeightF  = 0.015                    ; change font heights
 
 contour = gsn_csm_contour_map(wks,DIF_CLIM_ratio,res)
 
