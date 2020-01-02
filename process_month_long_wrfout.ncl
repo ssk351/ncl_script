@@ -236,8 +236,8 @@ max_L = max(Lulc1980_PRD) ; find max in Lulc1980_PRD
 indx = ind(Citexp_PRD.lt.max_L) ; indices of Citexp_PRD lower than max Lulc1980_PRD
 C_PRD = Citexp_PRD(indx) 
 
-Citexp_PRD_pdf = pdfx(C_PRD, 200, False)
-Lulc1980_PRD_pdf = pdfx(Lulc1980_PRD, 200, False)
+Citexp_PRD_pdf = pdfx(C_PRD, 1000, False)
+Lulc1980_PRD_pdf = pdfx(Lulc1980_PRD, 1000, False)
 
 nVar    = 2
 nBin    = Citexp_PRD_pdf@nbins          ; retrieve the number of bin
@@ -264,5 +264,6 @@ res@pmLegendWidthF         = 0.125               ; Change width and
 res@pmLegendHeightF        = 0.15                ; height of legend.
 res@lgPerimOn              = True                ; turn off/on box around
 res@lgLabelFontHeightF     = .015                ; label font height
-res@tiMainString           = "PDF: Three Distributions: 40 Bins"
+res@xyExplicitLegendLabels = (/"City Expansion","LULC1980"/)  ; create explicit labels
+;res@tiMainString           = "PDF: Three Distributions: 40 Bins"
 plot = gsn_csm_xy (wks, xx, yy, res)
