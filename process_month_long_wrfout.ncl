@@ -181,10 +181,10 @@ res@cnLinesOn           = False       ; Turn off contour lines
 res@mpFillOn = False
 
 res@mpLimitMode           = "Corners"
-res@mpLeftCornerLatF      = lat(0,0)
-res@mpLeftCornerLonF      = lon(0,30)
-res@mpRightCornerLatF     = lat(nlat-51,nlon-51)
-res@mpRightCornerLonF     = lon(nlat-51,nlon-51)
+res@mpLeftCornerLatF      = lat(10,30)
+res@mpLeftCornerLonF      = lon(10,30)
+res@mpRightCornerLatF     = lat(nlat-45,nlon-45)
+res@mpRightCornerLonF     = lon(nlat-45,nlon-45)
 
 ;res@mpLimitMode           = "LatLon"
 ;res@mpMinLatF             = 21
