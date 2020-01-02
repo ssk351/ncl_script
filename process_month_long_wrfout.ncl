@@ -197,7 +197,7 @@ res@cnFillPalette = "BlWhRe"
 ;res@cnLevels    = (/-2.0, -1.8, -1.6, -1.4, -1.2, -1.0, -0.8, -0.6, -0.4,-0.2, 0., 0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0/)   ; for wind  
 ;res@cnFillColors = (/4, 10, 18, 23, 30, 34, 38, 41, 44, 47, 50, 50, 53, 55, 57, 60, 64, 68, 74, 80, 88, 94/)                            ; diff plot
 
-res@cnLevels    = (/-0.25, -0.2, -0.15, -0.01,-0.05, 0., 0.05, 0.1, 0.15, 0.2, 0.25/)   ; for diff / clim
+res@cnLevels    = (/-0.25, -0.2, -0.15, -0.1,-0.05, 0., 0.05, 0.1, 0.15, 0.2, 0.25/)   ; for diff / clim
 res@cnFillColors = (/18, 27, 34, 41, 47, 50, 50, 53, 57, 60, 68, 80, 88/)                ; ratio plot
 
 res@cnLineLabelsOn = False                    ; turn the line labels off ;
