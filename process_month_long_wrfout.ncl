@@ -224,6 +224,14 @@ dim = dimsizes(Citexp)
 Citexp_PRD = Citexp(:, 10:dim(1) - 65 , 40:dim(2) - 45)
 Lulc1980_PRD = Lulc1980(:, 10:dim(1) - 65 , 40:dim(2) - 45)
 
+dim := dimsizes(Citexp_PRD)
+
+temp := reshape(Citexp_PRD,(/dim(0)*dim(1)*dim(2),1/))       ; reshape to make them 
+temp2 := reshape(Lulc1980_PRD,(/dim(0)*dim(1)*dim(2),1/))    ; one dimensional
+
+Citexp_PRD := temp 
+Lulc1980_PRD := temp2
+
 max_L = max(Lulc1980_PRD) ; find max in Lulc1980_PRD
 indx = ind(Citexp_PRD.lt.max_L) ; indices of Citexp_PRD lower than max Lulc1980_PRD
 C_PRD = Citexp_PRD(indx) 
@@ -250,7 +258,7 @@ res@gsnXYBarChart            = True              ; Create bar plot
 res@gsnXYBarChartOutlineOnly = True
 res@pmLegendDisplayMode    = "Always"            ; turn on legend
 res@pmLegendSide           = "Top"               ; Change location of 
-res@pmLegendParallelPosF   = 2.25                 ; move units right
+res@pmLegendParallelPosF   = .75                 ; move units right
 res@pmLegendOrthogonalPosF = -0.4                ; move units down
 res@pmLegendWidthF         = 0.125               ; Change width and
 res@pmLegendHeightF        = 0.15                ; height of legend.
