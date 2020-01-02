@@ -229,9 +229,8 @@ dim := dimsizes(Citexp_PRD)
 temp := reshape(Citexp_PRD,(/dim(0)*dim(1)*dim(2),1/))       ; reshape to make them 
 temp2 := reshape(Lulc1980_PRD,(/dim(0)*dim(1)*dim(2),1/))    ; one dimensional
 
-Citexp_PRD := temp 
-Lulc1980_PRD := temp2
-printVarSummary(Citexp_PRD)
+Citexp_PRD := rm_single_dims(temp) 
+Lulc1980_PRD := rm_single_dims(temp2)
 
 max_L = max(Lulc1980_PRD) ; find max in Lulc1980_PRD
 indx = ind(Citexp_PRD.lt.max_L) ; indices of Citexp_PRD lower than max Lulc1980_PRD
