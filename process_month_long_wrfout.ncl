@@ -216,6 +216,12 @@ delete(dim)
 ;-------- probability distribution density --------;
 
 Citexp = array_append_record(Citexp_Dec, Citexp_Jun, 0)
+
+
+printVarSummary(Citexp)
+printVarSummary(wspd10m_diff_Jun_mean)
+
+
 Lulc1980 = array_append_record(Lulc1980_Dec, Lulc1980_Jun, 0)
 Citexp@lat2d = wrf_user_getvar(wrfout,"XLAT",0)
 Lulc1980@lon2d = wrf_user_getvar(wrfout,"XLONG",0) 
