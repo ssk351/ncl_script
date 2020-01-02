@@ -218,14 +218,18 @@ delete(dim)
 Citexp = array_append_record(Citexp_Dec, Citexp_Jun, 0)
 Lulc1980 = array_append_record(Lulc1980_Dec, Lulc1980_Jun, 0)
 
-Citexp!1 = "lat"
-Citexp!2 = "lon"
+dim = dimsizes(Citexp)
 
-Lulc1980!1 = "lat"
-Lulc1980!2 = "lon"
+do i = 0, dim(0) - 1
 
-Citexp@lat2d = wrf_user_getvar(wrfout,"XLAT",0)
-Lulc1980@lon2d = wrf_user_getvar(wrfout,"XLONG",0) 
+Citexp(i,:,:)@lat2d = wrf_user_getvar(wrfout,"XLAT",0)
+Citexp(i,:,:)@lon2d = wrf_user_getvar(wrfout,"XLONG",0) 
+Lulc1980(i,:,:)@lon2d = wrf_user_getvar(wrfout,"XLONG",0) 
+Lulc1980(i,:,:)@lat2d = wrf_user_getvar(wrfout,"XLAT",0)
+
+end do
+
+delete(dim)
 
 Citexp_PRD = Citexp(:,{21:24},{112:115})  ; subtract data in PRD 21 - 24 N, 112 - 115 E
 Lulc1980_PRD = Lulc1980(:,{21:24},{112:115}) ; subtract data in PRD 21 - 24 N, 112 - 115 E
