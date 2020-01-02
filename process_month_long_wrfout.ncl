@@ -220,20 +220,20 @@ Lulc1980 = array_append_record(Lulc1980_Dec, Lulc1980_Jun, 0)
 
 dim = dimsizes(Citexp)
 
-
+Citexp!0 = "time"
 Citexp!1 = "lat"
 Citexp!2 = "lon"
+
+Lulc1980!1 = "time"
 Lulc1980!1 = "lat"
 Lulc1980!2 = "lon"
 
-;do i = 0, dim(0) - 1
+printVarSummary(Citexp)	
 
-Citexp(:,:,:)&lat = wrf_user_getvar(wrfout,"XLAT",0)
-Citexp(:,:,:)&lon = wrf_user_getvar(wrfout,"XLONG",0) 
-Lulc1980(:,:,:)&lon = wrf_user_getvar(wrfout,"XLONG",0) 
-Lulc1980(:,:,:)&lat = wrf_user_getvar(wrfout,"XLAT",0)
-
-;end do
+;Citexp&lat = wrf_user_getvar(wrfout,"XLAT",0)
+;Citexp&lon = wrf_user_getvar(wrfout,"XLONG",0) 
+;Lulc1980&lon = wrf_user_getvar(wrfout,"XLONG",0) 
+;Lulc1980&lat = wrf_user_getvar(wrfout,"XLAT",0)
 
 delete(dim)
 
