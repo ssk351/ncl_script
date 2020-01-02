@@ -60,27 +60,35 @@ loc = wrf_user_ll_to_ij(wrfout,lon,lat, opt)
 ; loc(0) is lon grid index loc(1) is lat grid index, while wspd10_mean(0) is lat grid index, wspd10_mean(1) is lon grid index
 ;-------------------------------
 
-wspd_at_obs_points(cot,0) = obs_loc(cot,0)  ; station ID
-wspd_at_obs_points(cot,1) = obs_loc(cot,1)  ; lon
-wspd_at_obs_points(cot,2) = obs_loc(cot,2)  ; lat
+;wspd_at_obs_points(cot,0) = obs_loc(cot,0)  ; station ID
+;wspd_at_obs_points(cot,1) = obs_loc(cot,1)  ; lon
+;wspd_at_obs_points(cot,2) = obs_loc(cot,2)  ; lat
+
+t2_at_obs_points(cot,0) = obs_loc(cot,0)  ; station ID
+t2_at_obs_points(cot,1) = obs_loc(cot,1)  ; lon
+t2_at_obs_points(cot,2) = obs_loc(cot,2)  ; lat
 
 if loc(0) .lt. 0 .or. loc(1) .lt. 0 .or. loc(0) .ge. dims(1) .or. loc(1) .ge. dims(0) then
-	wspd_at_obs_points(cot,3:18) = 0
-
+	;wspd_at_obs_points(cot,3:18) = 0
+     t2_at_obs_points(cot,3:18) = 0
 else 
-	wspd_at_obs_points(cot,3:18) = wspd10(:,loc(1),loc(0))
+	;wspd_at_obs_points(cot,3:18) = wspd10(:,loc(1),loc(0))
+     t2_at_obs_points(cot,3:18) = t2_obsT_cels(:,loc(1),loc(0))
 end if
 
 end do
 
-fname = "wspd10_Jun2015_model_validation.txt"
+;fname = "wspd10_Jun2015_model_validation.txt"
+fname = "t2_Jun2015_model_validation.txt"
 
 do j = 0, 825
 
-daily = reshape(wspd_at_obs_points(j,3:18),(/4,4/))
+;daily = reshape(wspd_at_obs_points(j,3:18),(/4,4/))
+daily = reshape(t2_at_obs_points(j,3:18),(/4,4/))
 daily_mean = dim_avg_n(daily,1)
 
-alist = [/wspd_at_obs_points(j,0),wspd_at_obs_points(j,1),wspd_at_obs_points(j,2),daily_mean(0),daily_mean(1),daily_mean(2),daily_mean(3)/]
+;alist = [/wspd_at_obs_points(j,0),wspd_at_obs_points(j,1),wspd_at_obs_points(j,2),daily_mean(0),daily_mean(1),daily_mean(2),daily_mean(3)/]
+alist = [/t2_at_obs_points(j,0),t2_at_obs_points(j,1),t2_at_obs_points(j,2),daily_mean(0),daily_mean(1),daily_mean(2),daily_mean(3)/]
 write_table(fname,"a",alist,"%.0f   %.4f   %.4f   %.3f   %.3f   %.3f   %.3f ")
 
 end do
