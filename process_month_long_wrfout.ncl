@@ -224,13 +224,12 @@ dim = dimsizes(Citexp)
 Citexp_PRD = Citexp(:, 10:dim(1) - 65 , 40:dim(2) - 45)
 Lulc1980_PRD = Lulc1980(:, 10:dim(1) - 65 , 40:dim(2) - 45)
 
-dim := dimsizes(Citexp_PRD)
+max_L = max(Lulc1980_PRD) ; find max in Lulc1980_PRD
+indx = ind(Citexp_PRD.lt.max_L) ; indices of Citexp_PRD lower than max Lulc1980_PRD
+C_PRD = Citexp_PRD(indx) 
 
-;C_P = reshape(Citexp_PRD,(/dim(0)*dim(1)*dim(2),1/))
-;L_P = reshape(Lulc1980_PRD,(/dim(0)*dim(1)*dim(2),1/))
-
-Citexp_PRD_pdf = pdfx(Citexp_PRD, 0, False)
-Lulc1980_PRD_pdf = pdfx(Lulc1980_PRD, 0, False)
+Citexp_PRD_pdf = pdfx(C_PRD, 200, False)
+Lulc1980_PRD_pdf = pdfx(Lulc1980_PRD, 200, False)
 
 nVar    = 2
 nBin    = Citexp_PRD_pdf@nbins          ; retrieve the number of bin
