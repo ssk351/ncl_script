@@ -236,8 +236,8 @@ max_L = max(Lulc1980_PRD) ; find max in Lulc1980_PRD
 indx = ind(Citexp_PRD.lt.max_L) ; indices of Citexp_PRD lower than max Lulc1980_PRD
 C_PRD = Citexp_PRD(indx) 
 
-Citexp_PRD_pdf = pdfx(C_PRD, 1000, False)
-Lulc1980_PRD_pdf = pdfx(Lulc1980_PRD, 1000, False)
+Citexp_PRD_pdf = pdfx(C_PRD, 5000, False)
+Lulc1980_PRD_pdf = pdfx(Lulc1980_PRD, 5000, False)
 
 nVar    = 2
 nBin    = Citexp_PRD_pdf@nbins          ; retrieve the number of bin
