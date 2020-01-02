@@ -181,10 +181,10 @@ res@cnLinesOn           = False       ; Turn off contour lines
 res@mpFillOn = False
 
 res@mpLimitMode           = "Corners"
-res@mpLeftCornerLatF      = lat(20,20)
+res@mpLeftCornerLatF      = lat(2,2)
 res@mpLeftCornerLonF      = lon(20,20)
-res@mpRightCornerLatF     = lat(nlat-21,nlon-21)
-res@mpRightCornerLonF     = lon(nlat-21,nlon-21)
+res@mpRightCornerLatF     = lat(nlat-51,nlon-51)
+res@mpRightCornerLonF     = lon(nlat-31,nlon-31)
 
 ;res@mpLimitMode           = "LatLon"
 ;res@mpMinLatF             = 21
@@ -219,8 +219,12 @@ contour = gsn_csm_contour_map(wks,DIF_CLIM_ratio,res)
 ;Citexp = array_append_record(Citexp_Dec, Citexp_Jun, 0)
 ;Lulc1980 = array_append_record(Lulc1980_Dec, Lulc1980_Jun, 0)
 ;
+;dim = dimsizes(Citexp)
 ;
-;dim = dimsizes(Citexp_PRD)
+;Citexp_PRD = Citexp(:,)
+;Lulc1980_PRD = 
+;
+;dim := dimsizes(Citexp_PRD)
 ;
 ;C_P = reshape(Citexp_PRD,(/dim(0)*dim(1)*dim(2),1/))
 ;L_P = reshape(Lulc1980_PRD,(/dim(0)*dim(1)*dim(2),1/))
