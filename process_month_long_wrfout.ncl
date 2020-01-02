@@ -238,9 +238,9 @@ xx      = new ( (/nVar, nBin/), typeof(Citexp_PRD_pdf))
 xx(0,:) = Citexp_PRD_pdf@bin_center     ; assign appropriate "x" axis values
 xx(1,:) = Lulc1980_PRD_pdf@bin_center
 
-yy      = new ( (/nVar, nBin/), typeof(ap))
-yy(0,:) = (/ ap /)
-yy(1,:) = (/ bp /)
+yy      = new ( (/nVar, nBin/), typeof(Citexp_PRD_pdf))
+yy(0,:) = (/ Citexp_PRD_pdf /)
+yy(1,:) = (/ Lulc1980_PRD_pdf /)
 wks  = gsn_open_wks ("pdf","lulc1980_vs_city_expansion_10mWSPD_pdf")                ; send graphics to PNG file
 res  = True
 res@xyLineThicknesses        = (/2.0,2.0/)        
