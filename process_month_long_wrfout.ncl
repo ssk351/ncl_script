@@ -234,14 +234,14 @@ Lulc1980_PRD_pdf = pdfx(L_P, 0, False)
 
 nVar = 1
 plot = new ( nVar, "graphic")
-wks  = gsn_open_wks ("pdf","lulc1980_vs_city_expansion_10mWSPD_pdf")                ; send graphics to PNG file
+wks  = gsn_open_wks ("pdf","lulc1980_vs_city_expansion_10mWSPD_pdf2")                ; send graphics to PNG file
 res  = True
 res@gsnDraw                = False
 res@gsnFrame               = False
 res@xyLineThicknessF       = 2
 res@tiYAxisString          = "PDF (%)"
 
-plot(0) = gsn_csm_xy (wks, Citexp_PRD_pdf@bin_center, Citexp_PRD_pdf, res)
+plot(0) = gsn_csm_xy (wks, Lulc1980_PRD_pdf@bin_center, Lulc1980_PRD_pdf, res)
 
 resP    = True
 resP@gsnPanelRowSpec       = True              ; tell panel what order to plt
