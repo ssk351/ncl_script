@@ -220,12 +220,13 @@ Lulc1980 = array_append_record(Lulc1980_Dec, Lulc1980_Jun, 0)
 
 dim = dimsizes(Citexp)
 
-do i = 0, dim(0) - 1
 
-Citexp(i,:,:)!1 = "lat"
-Citexp(i,:,:)!2 = "lon"
-Lulc1980(i,:,:)!1 = "lat"
-Lulc1980(i,:,:)!2 = "lon"
+Citexp!1 = "lat"
+Citexp!2 = "lon"
+Lulc1980!1 = "lat"
+Lulc1980!2 = "lon"
+
+do i = 0, dim(0) - 1
 
 Citexp(i,:,:)&lat2d = wrf_user_getvar(wrfout,"XLAT",0)
 Citexp(i,:,:)&lon2d = wrf_user_getvar(wrfout,"XLONG",0) 
