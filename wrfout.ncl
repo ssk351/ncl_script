@@ -2,7 +2,7 @@
 ;     read and process data
 ;----------------------------
  
-wrfout = addfile("/depot/dniyogi/data/tian/pearl_river_delta_city_expansion/wrfout_d03_2013-08-04_12:00:00","r")
+wrfout = addfile("/depot/dniyogi/data/tian/PRD_city_expansion_Dec2015/wrfout_d03_2015-12-01_00:00:00","r")
 ;wrfout = addfile("/depot/dniyogi/data/tian/run_with_casLULC_2015_d_t5/wrfout_d03_2013-10-04_12:00:00","r")
 
 
