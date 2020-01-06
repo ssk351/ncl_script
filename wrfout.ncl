@@ -186,13 +186,13 @@ res@mpLambertParallel2F   = wrfout@TRUELAT2
 res@mpLambertMeridianF    = wrfout@STAND_LON
 
 res@cnLevelSelectionMode = "ExplicitLevels"	; manually set the contour levels
-;res@cnFillPalette = "BlWhRe"
-;res@cnLevels    =   (/0.1, 100, 200, 300, 400 ,500, 600 ,700 ,800, 900, 1000/);
-;res@cnFillColors = (/2, 4, 9, 17, 21, 27, 40, 68, 86, 120, 140, 160/);
-
 res@cnFillPalette = "OceanLakeLandSnow"
-res@cnLevels    = (/-2.0, -1.8, -1.6, -1.4, -1.2, -1.0, -0.8, -0.6, -0.4,-0.2, 0., 0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0/);
-res@cnFillColors = (/4, 10, 18, 23, 30, 34, 38, 41, 44, 47, 50, 50, 53, 55, 57, 60, 64, 68, 74, 80, 88, 94/);
+res@cnLevels    =   (/0.1, 100, 200, 300, 400 ,500, 600 ,700 ,800, 900, 1000/);
+res@cnFillColors = (/2, 4, 9, 17, 21, 27, 40, 68, 86, 120, 140, 160/);
+
+;res@cnFillPalette = "BlWhRe"
+;res@cnLevels    = (/-2.0, -1.8, -1.6, -1.4, -1.2, -1.0, -0.8, -0.6, -0.4,-0.2, 0., 0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0/);
+;res@cnFillColors = (/4, 10, 18, 23, 30, 34, 38, 41, 44, 47, 50, 50, 53, 55, 57, 60, 64, 68, 74, 80, 88, 94/);
 
 res@cnLineLabelsOn = False                    ; turn the line labels off ;
 
