@@ -187,7 +187,7 @@ res@mpLambertMeridianF    = wrfout@STAND_LON
 
 res@cnLevelSelectionMode = "ExplicitLevels"	; manually set the contour levels
 res@cnFillPalette = "OceanLakeLandSnow"
-res@cnLevels    =   (/0.1, 100, 200, 300, 400 ,500, 600 ,700 ,800, 900, 1000/);
+res@cnLevels    =   (/0, 100, 200, 300, 400 ,500, 600 ,700 ,800, 900, 1000/);
 res@cnFillColors = (/2, 4, 9, 17, 21, 27, 40, 68, 86, 120, 140, 160/);
 
 ;res@cnFillPalette = "BlWhRe"
