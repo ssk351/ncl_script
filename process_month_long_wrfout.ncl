@@ -16,7 +16,7 @@ v10_obsT = v10(T_ind,:,:)               ; 10m v wind at observation times
 
 ;-------- output to .nc -------;
 
-ncdf = addfile("run_with_LULC1980_on_10WSPD_Jun2015_p3.nc","c")
+ncdf = addfile("run_with_LULC1980_on_10UV_Jun2015_p3.nc","c")
 filedimdef(ncdf,"time",-1,True)
 
 ;wspd10_Jun2015_p3@lat2d = wrf_user_getvar(wrfout,"XLAT",0)   ; latitude/longitude
