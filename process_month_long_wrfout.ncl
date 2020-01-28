@@ -185,17 +185,17 @@ res@cnFillOn = True
 res@cnLinesOn           = False       ; Turn off contour lines
 res@mpFillOn = False
 
-res@mpLimitMode           = "Corners"
-res@mpLeftCornerLatF      = lat(10,65)
-res@mpLeftCornerLonF      = lon(10,65)
-res@mpRightCornerLatF     = lat(nlat-65,nlon-45)
-res@mpRightCornerLonF     = lon(nlat-65,nlon-45)
+;res@mpLimitMode           = "Corners"
+;res@mpLeftCornerLatF      = lat(10,65)
+;res@mpLeftCornerLonF      = lon(10,65)
+;res@mpRightCornerLatF     = lat(nlat-65,nlon-45)
+;res@mpRightCornerLonF     = lon(nlat-65,nlon-45)
 
-;res@mpLimitMode           = "LatLon"
-;res@mpMinLatF             = 21
-;res@mpMaxLatF             = 24
-;res@mpMinLonF             = 112
-;res@mpMaxLonF             = 115
+res@mpLimitMode           = "LatLon"
+res@mpMinLatF             = 21
+res@mpMaxLatF             = 24
+res@mpMinLonF             = 112
+res@mpMaxLonF             = 115
 
 res@mpLambertParallel1F   = wrfout@TRUELAT1
 res@mpLambertParallel2F   = wrfout@TRUELAT2
@@ -301,5 +301,6 @@ contour = gsn_csm_contour_map(wks,DIF_CLIM_ratio,res)
 ;res@vcMinDistanceF           = 0.03
 ;res@mpProjection  = "LambertConformal"    ; 
 ;res@tfDoNDCOverlay           = False
+;res@mpFillOn = False
 
 ;plot = gsn_csm_vector_map(wks, , ,res)
