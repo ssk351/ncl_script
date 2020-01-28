@@ -219,8 +219,8 @@ contour = gsn_csm_contour_map(wks,height, res)
 ;  res@mpMaxLonF     = urlon -0.5
 ;
 ;
-;res@gsnDraw = True
-;res@gsnFrame      = True  ;  advance frame
+;res@gsnDraw = False ; don't draw
+;res@gsnFrame      = False  ;  don't advance frame
 ;res@pmTickMarkDisplayMode = "Always" 
 ;res@gsnMajorLatSpacing = 20              ; change maj lat tm spacing
 ;res@gsnMajorLonSpacing = 50              ; change maj lon tm spacing 

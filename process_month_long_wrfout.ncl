@@ -272,3 +272,35 @@ ncdf->v10_p3 = v10_obsT;
 ;plot = gsn_csm_xy (wks, xx, yy, res)
 
 ;--------- vector plot ------------;
+;wks = gsn_open_wks("pdf","")
+;
+;res = True
+;
+;res@gsnMaximize   = True   ; maximize plot in frame
+;res@gsnDraw       = False  ; don't draw
+;res@gsnFrame      = False  ; don't advance frame
+;res@gsnMaximize   = True   ; use full page
+;
+;;---Zoom in on plot
+
+;res@mpLimitMode           = "LatLon"
+;res@mpMinLatF             = 21
+;res@mpMaxLatF             = 24
+;res@mpMinLonF             = 112
+;es@mpMaxLonF             = 115
+;
+;
+;res@gsnDraw = False ; don't draw
+;res@gsnFrame      = False  ;  don't advance frame
+;res@pmTickMarkDisplayMode = "Always" 
+;res@gsnMajorLatSpacing = 20              ; change maj lat tm spacing
+;res@gsnMajorLonSpacing = 50              ; change maj lon tm spacing 
+;res@vcGlyphStyle     = "CurlyVector"   ; curly vectors
+;res@vcRefMagnitudeF  = 5              ; define vector ref mag
+;res@vcRefLengthF     = 0.04           ; define length of vec ref
+;;res@vcRefAnnoOrthogonalPosF = -.15    ; move ref vector into plot
+;res@vcMinDistanceF           = 0.03
+;res@mpProjection  = "LambertConformal"    ; The default
+;res@tfDoNDCOverlay           = False
+
+;plot = gsn_csm_vector_map(wks, , ,res)
