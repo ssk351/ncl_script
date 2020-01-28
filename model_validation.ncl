@@ -25,6 +25,18 @@ wrfout = addfile("/depot/dniyogi/data/tian/run_with_LULC2015_Dec2015/wrfout_d03_
 T := wrf_user_getvar(wrfout,"times",-1)
 T_ind = ispan() 
 
+uv = wrf_user_getvar(wrfout,"uvmet",-1)
+u = uv(0,:,:,:)
+v = uv(1,:,:,:)
+
+; Interpolate to pressure level
+pf = pf * 0.01                ; Convert to hPa
+
+u995 = wrf_interp_3d_z(u,pf,995.)
+u925 = wrf_interp_3d_z(u,pf,925.)
+u850 = wrf_interp_3d_z(u,pf,850.)
+u700 = wrf_interp_3d_z(u,pf,700.)
+
 
 ;-------- output to .nc -------;
 
