@@ -97,7 +97,7 @@ delete(dim)
 
 ;------ run with LULC1980 Dec2015
 
-lulc1980_Dec_p1 = addfile("/home/tqun/scratch/brown/tqun/wrfdata/run_with_LULC1980_on_10WSPD_Dec2015_p1.nc","r")
+lulc1980_Dec_p1 = addfile("/scratch/brown/tqun/wrfdata/run_with_LULC1980_on_10WSPD_Dec2015_p1.nc","r")
 lulc1980_Dec_p2 = addfile("/scratch/brown/tqun/wrfdata/run_with_LULC1980_on_10WSPD_Dec2015_p2.nc","r")
 lulc1980_Dec_p3 = addfile("/scratch/brown/tqun/wrfdata/run_with_LULC1980_on_10WSPD_Dec2015_p3.nc","r")
 lulc1980_Dec_p4 = addfile("/scratch/brown/tqun/wrfdata/run_with_LULC1980_on_10WSPD_Dec2015_p4.nc","r")
